@@ -5,14 +5,22 @@ public:
 	int passengers; // number of passengers
 	int fuelcap; // fuel capacity
 	int mpg; // fuel consumption
+
+	int range();
 };
+
+int Vehicle::range() {
+	return mpg*fuelcap;
+}
 
 int main() {
 	Vehicle minivan;
 	Vehicle cabriolet;
 
+	int range = 0;
 	int range1 = 0; //distance of mileage
 	int range2 = 0;
+	
 
 	minivan.passengers = 7;
 	minivan.fuelcap = 16;
@@ -25,9 +33,7 @@ int main() {
 	range1 = minivan.fuelcap*minivan.mpg;
 	range2 = cabriolet.fuelcap*cabriolet.mpg;
 
-	std::cout << range1 << "\n" << range2; 
-
-
-
+	range = minivan.range();
+	
 	return 0;
 }
