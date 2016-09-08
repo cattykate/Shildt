@@ -1,4 +1,6 @@
 #include <iostream>
+
+
 // function returns minimum 
 int min(int a, int b) {
 	if (a < b) {
@@ -38,6 +40,11 @@ void showBinary(unsigned int u) {
 	std::cout << std::endl;
 }
 
+
+int divZero() {
+	std::cout << "Sorry! :( i can't divide by zero!"; 
+	return 0;
+}
 int main() {
 
 
@@ -45,19 +52,34 @@ int main() {
 	std::cout << "min(9, 3): " << min(9, 3) << std::endl;
 	std::cout << "*min(&i, &j): " << *min(&i, &j) << std::endl;*/
 
-	int i = 1; 
+	
+	//int i = 1; 
 
-	for (int t = 0; t < 8; t++) {
-		showBinary(i);
-		i = i << 1; // left shift
-	}
-	std::cout << "\n";
+	//for (int t = 0; t < 8; t++) {
+	//	showBinary(i);
+	//	i = i << 1; // left shift
+	//}
+	//std::cout << "\n";
 
-	for (int t = 0; t < 8; t++) {
-		i = i >> 1; // right shift
-		showBinary(i);
-	}
-	std::cout << "\n";
+	//for (int t = 0; t < 8; t++) {
+	//	i = i >> 1; // right shift
+	//	showBinary(i);
+	//}
+	//std::cout << "\n"; 
 
+	
+	int i = 0;
+	int j = 0;
+	int result = 0;
+	
+
+	std::cout << "Enter dividend and divisor: ";
+	std::cin >> i >> j;
+
+	result = j ? i / j : divZero(); // we use operator ? for prevent an error division by zero
+
+	std::cout << "Result: " << result;
+
+	system("pause");
 	return 0;
 }
