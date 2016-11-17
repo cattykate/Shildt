@@ -1,7 +1,9 @@
 ///////////////////////////////
-//---OVERLOAD OF OPERATIONS----
 //-------CLASS COMPLEX--------
+//---OVERLOAD OF OPERATIONS---
 //-------TASKS 2, 18----------
+//-------INPUT/OUTPUT---------
+//--------TASK 18-------------
 ///////////////////////////////
 
 #include <iostream>
@@ -11,10 +13,13 @@ class Complex {
 	double real;
 	double image;
 	double module;
+	double argument;
 public:
 	//Complex() { real = image = 0; }
 	Complex() : real(0), image(0) {}
-	Complex(double re, double im) { real = re; image = im; getModule();}
+	Complex(double re, double im) { 
+		real = re; image = im; getModule(); getArgument(); }
+
 	Complex operator+(Complex op2);
 	Complex operator+(double op2);
 	bool operator>(Complex op2);
@@ -22,6 +27,9 @@ public:
 
 	void show();
 	void getModule();
+	void getArgument();
+
+	friend std::ostream &operator<<(std::ostream &stream, Complex obj); 
 };
 
 // ovearload operator+ for Complex numbers
@@ -55,11 +63,11 @@ bool Complex::operator>(Complex op2) {
 // overload operator< for complex numbers
 bool Complex::operator<(Complex op2) {
 	if (module < op2.module) return true;
-	if (module == op2.module) {
+	else if (module == op2.module) {
 		if (real < op2.real) return true;
 		else return false;
 	}
-	if (module > op2.module) return false;
+	else if (module > op2.module) return false;
 }
 
 void Complex::show() {
@@ -71,19 +79,28 @@ void Complex::getModule() {
 	module = sqrt(real*real + image*image);
 }
 
+void Complex::getArgument() {
+	const double pi = 3.14159;
+
+	if (real < 0) argument = atan(image / real);
+	else if (real < 0 && image > 0) argument = pi + atan(image / real);
+	else if (real < 0 && image < 0) argument = -pi + atan(image / real);
+}
+
+// output operator
+std::ostream &operator<<(std::ostream &stream, Complex obj) {
+	stream << "|z| = " << obj.module << std::endl;
+	stream << "cos(fi) = " << cos(obj.argument) << std::endl;
+	stream << "sin(fi) = " << sin(obj.argument) << std::endl;
+	return stream;
+}
+
 int main() {
 	Complex a;
 	Complex b = { 1, 3 };
 	Complex c(5, 4);
 
-	a.show();
-	a = b + 2.0;
-	a.show();
-	b.show();
-	c.show();
-
-	if (a < b) std::cout << "a<b\n";
-	if (a > b) std::cout << "a>b\n";
+	std::cout << a;
 
 	return 0;
 }
