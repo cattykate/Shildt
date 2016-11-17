@@ -3,6 +3,7 @@
 //-------CLASS COMPLEX--------
 //-------TASKS 2, 18----------
 ///////////////////////////////
+
 #include <iostream>
 //#include <cmath>
 
@@ -17,6 +18,7 @@ public:
 	Complex operator+(Complex op2);
 	Complex operator+(double op2);
 	bool operator>(Complex op2);
+	bool operator<(Complex op2);
 
 	void show();
 	void getModule();
@@ -50,6 +52,16 @@ bool Complex::operator>(Complex op2) {
 	if (module < op2.module) return false;
 }
 
+// overload operator< for complex numbers
+bool Complex::operator<(Complex op2) {
+	if (module < op2.module) return true;
+	if (module == op2.module) {
+		if (real < op2.real) return true;
+		else return false;
+	}
+	if (module > op2.module) return false;
+}
+
 void Complex::show() {
 	std::cout << "re = " << real << std::endl;
 	std::cout << "im = " << image << "\n\n";
@@ -70,6 +82,8 @@ int main() {
 	b.show();
 	c.show();
 
+	if (a < b) std::cout << "a<b\n";
+	if (a > b) std::cout << "a>b\n";
 
 	return 0;
 }
