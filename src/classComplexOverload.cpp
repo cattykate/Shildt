@@ -8,6 +8,7 @@ public:
 	Complex() : real(0), image(0) {};
 	Complex(double re, double im) : real(re), image(im) {};
 	Complex operator+(Complex op2);
+	Complex operator+(double op2);
 
 	void show();
 };
@@ -20,7 +21,14 @@ Complex Complex::operator+(Complex op2) {
 	tmp.image = image + op2.image;
 	return tmp; // return new object, arguments didn't change
 }
+//overload operator+ for real numbers
+Complex Complex::operator+(double op2) {
+	Complex tmp;
 
+	tmp.real = real + op2;
+	tmp.image = image;
+	return tmp;
+}
 
 void Complex::show() {
 	std::cout << "re = " << real << std::endl;
@@ -33,7 +41,7 @@ int main() {
 	Complex c(5, 4);
 
 	a.show();
-	a = b + c;
+	a = b + 2.0;
 
 	a.show();
 	b.show();
