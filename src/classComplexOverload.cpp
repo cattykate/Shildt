@@ -15,6 +15,7 @@ class Complex {
 	double module;
 	double argument;
 public:
+	//Complex() {};
 	//Complex() { real = image = 0; }
 	Complex() : real(0), image(0) {}
 	Complex(double re, double im) { 
@@ -30,6 +31,7 @@ public:
 	void getArgument();
 
 	friend std::ostream &operator<<(std::ostream &stream, Complex obj); 
+	friend std::istream &operator>>(std::istream &stream, Complex &obj);
 };
 
 // ovearload operator+ for Complex numbers
@@ -87,11 +89,18 @@ void Complex::getArgument() {
 	else if (real < 0 && image < 0) argument = -pi + atan(image / real);
 }
 
-// output operator
+// overload output operator
 std::ostream &operator<<(std::ostream &stream, Complex obj) {
 	stream << "|z| = " << obj.module << std::endl;
 	stream << "cos(fi) = " << cos(obj.argument) << std::endl;
 	stream << "sin(fi) = " << sin(obj.argument) << std::endl;
+	return stream;
+}
+
+// overload input operator
+std::istream &operator>>(std::istream &stream, Complex &obj) {
+	stream >> obj.real;
+	stream >> obj.image;
 	return stream;
 }
 
@@ -100,7 +109,9 @@ int main() {
 	Complex b = { 1, 3 };
 	Complex c(5, 4);
 
+	std::cout << "Enter real and image part of complex number\n";
+	std::cin >> a;
 	std::cout << a;
-
+	
 	return 0;
 }
