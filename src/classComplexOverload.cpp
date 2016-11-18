@@ -7,6 +7,7 @@
 ///////////////////////////////
 
 #include <iostream>
+#include <fstream>
 //#include <cmath>
 
 class Complex {
@@ -105,9 +106,20 @@ std::istream &operator>>(std::istream &stream, Complex &obj) {
 }
 
 int main() {
+	// ENTRY TO FILE
+	std::ofstream out("Complex.txt"); // create and open file
+	if (!out) {
+		std::cout << "Can't open Complex.txt";
+			return 1;
+	}
+	Complex c(5, 4);
+
+	out << c << "\n"; // output to the "Complex.txt"
+	out.close(); // closing the file
+
+
 	Complex a;
 	Complex b = { 1, 3 };
-	Complex c(5, 4);
 
 	std::cout << "Enter real and image part of complex number\n";
 	std::cin >> a;
