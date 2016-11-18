@@ -106,17 +106,26 @@ std::istream &operator>>(std::istream &stream, Complex &obj) {
 }
 
 int main() {
-	// ENTRY TO FILE
+	// ENTRY TO THE FILE
 	std::ofstream out("Complex.txt"); // create and open file
 	if (!out) {
 		std::cout << "Can't open Complex.txt";
 			return 1;
 	}
+	
 	Complex c(5, 4);
 
 	out << c << "\n"; // output to the "Complex.txt"
 	out.close(); // closing the file
 
+	//READ FROM THE FILE
+	std::ifstream in("Complex.txt");
+	if (!in) {
+		std::cout << "Can't open Complex.txt";
+		return 1;
+	}
+	in >> c; 
+	std::cout << c;
 
 	Complex a;
 	Complex b = { 1, 3 };
