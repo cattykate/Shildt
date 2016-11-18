@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 //#include <cmath>
 
 class Complex {
@@ -90,11 +91,16 @@ void Complex::getArgument() {
 	else if (real < 0 && image < 0) argument = -pi + atan(image / real);
 }
 
+std::ostream &myManipulator(std::ostream &stream) {
+	stream << std::scientific << std::setprecision(5);
+	return stream;
+}
+
 // overload output operator
 std::ostream &operator<<(std::ostream &stream, Complex obj) {
-	stream << "|z| = " << obj.module << std::endl;
-	stream << "cos(fi) = " << cos(obj.argument) << std::endl;
-	stream << "sin(fi) = " << sin(obj.argument) << std::endl;
+	stream << "|z| = " << myManipulator << obj.module <<  std::endl;
+	stream << "cos(fi) = " <<  myManipulator << cos(obj.argument) <<  std::endl;
+	stream << "sin(fi) = "  <<  myManipulator << sin(obj.argument)  << std::endl;
 	return stream;
 }
 
@@ -126,6 +132,7 @@ int main() {
 	}
 	in >> c; 
 	std::cout << c;
+	in.close(); // closing the file!!!!!
 
 	Complex a;
 	Complex b = { 1, 3 };
