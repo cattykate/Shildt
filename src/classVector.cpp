@@ -18,14 +18,20 @@ class Vector {
 	int size;
 public:	
 	Vector(int n, double *arr);
+	Vector() {};
+
 	double getMod();
 
 	double operator [] (int a) {
 		return data[a];
 	}
 
+	Vector operator+(Vector vb);
+	
+
 	friend double operator*(Vector va, Vector vb);
 	friend double operator%(Vector va, Vector vb);
+
 };
 
 double Vector::getMod() {
@@ -47,6 +53,18 @@ Vector::Vector(int n, double *arr) {
 	{
 		data[i] = arr[i];
 	}
+}
+
+// + with Vector 
+// DON'T CORRECCT
+// ERROR
+Vector Vector::operator+(Vector vb) {
+	Vector vtemp;
+
+	for (int i = 0; i < vtemp.size; i++) {
+		vtemp.data[i] = vtemp.data[i] + vb.data[i];
+	}
+	return vtemp;
 }
 
 // SCALAR MULTIPLY
@@ -71,9 +89,9 @@ int main() {
 	double b[] = { 2,1,1 };
 	Vector vb(3, b);
 
-	double c;
-	c = va%vb;
-	
+	Vector vc;
+
+	vc = va + vb;
 
 
 	return 0; 
