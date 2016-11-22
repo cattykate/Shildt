@@ -23,7 +23,9 @@ public:
 	double operator [] (int a) {
 		return data[a];
 	}
-	
+
+	friend double operator*(Vector va, Vector vb);
+
 };
 
 double Vector::getMod() {
@@ -47,14 +49,25 @@ Vector::Vector(int n, double *arr) {
 	}
 }
 
+// SCALAR MULTIPLY
+double operator*(Vector va, Vector vb) {
+	double scal = 0;
+	for (int i = 0; i < va.size; i++) {
+		scal = scal + va.data[i]*vb.data[i];
+	}
+	return scal;
+}
+
+
 int main() {
 	double a[] = { 1,3,4 };
 	Vector va(3, a);
 
-	double b[] = { 1,1,1 };
+	double b[] = { 2,1,1 };
 	Vector vb(3, b);
 
-
+	double c;
+	c = va*vb;
 	
 
 
