@@ -25,7 +25,7 @@ public:
 	}
 
 	friend double operator*(Vector va, Vector vb);
-
+	friend double operator%(Vector va, Vector vb);
 };
 
 double Vector::getMod() {
@@ -58,6 +58,11 @@ double operator*(Vector va, Vector vb) {
 	return scal;
 }
 
+//PROJECTION
+double operator%(Vector va, Vector vb) {
+	return ((va*vb) / vb.getMod());
+}
+
 
 int main() {
 	double a[] = { 1,3,4 };
@@ -67,7 +72,7 @@ int main() {
 	Vector vb(3, b);
 
 	double c;
-	c = va*vb;
+	c = va%vb;
 	
 
 
