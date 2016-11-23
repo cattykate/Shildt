@@ -16,6 +16,7 @@ public:
 	
 
 	Vector operator+(double num);
+	Vector operator+(Vector vb);
 };
 
 Vector::Vector(int n) {
@@ -24,6 +25,7 @@ Vector::Vector(int n) {
 		vec.push_back(0);
 	}
 }
+
 Vector Vector::operator+(double num) {
 
 	for (int i = 0; i < size; i++) {
@@ -32,6 +34,12 @@ Vector Vector::operator+(double num) {
 	return *this;
 }
 
+Vector Vector::operator+(Vector vb) {
+	for (int i = 0; i < size; i++) {
+		vec[i] = vec[i] + vb.vec[i];
+	}
+	return *this;
+}
 
 int main() {
 	Vector va(3);
@@ -48,8 +56,9 @@ int main() {
 	
 
 	Vector vc(3);
-	double cnum = 7.0;
-	vc = va + cnum;
+	/*double cnum = 7.0;
+	vc = va + cnum;*/
+	vc = va + vb;
 
 
 	return 0;
