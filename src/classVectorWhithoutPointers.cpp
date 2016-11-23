@@ -19,6 +19,10 @@ public:
 
 	Vector operator+(double num);
 	Vector operator+(Vector vb);
+
+	friend double operator+(Vector va, Vector vb); // scalar multiply
+	friend Vector operator*(Vector va, Vector vb); // vector multiply
+	 
 };
 
 Vector::Vector(int n) {
@@ -50,6 +54,18 @@ Vector Vector::operator+(Vector vb) {
 	}
 	return *this;
 }
+
+//Scalar multiply
+double operator+(Vector va, Vector vb) {
+	double scalar = 0.0;
+	for (int i = 0; i < va.size; i++) {
+		scalar = scalar + va.vec[i] * vb.vec[i];
+	}
+	return scalar;
+}
+
+//Vector multiply
+
 
 int main() {
 	Vector va(3);
