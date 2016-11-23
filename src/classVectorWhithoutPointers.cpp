@@ -6,6 +6,7 @@
 ///////////////////////////////
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 class Vector {
 private:
@@ -14,6 +15,7 @@ public:
 	std::vector<double> vec;
 	Vector(int n);
 	
+	double getMod();
 
 	Vector operator+(double num);
 	Vector operator+(Vector vb);
@@ -24,6 +26,14 @@ Vector::Vector(int n) {
 	for (int i = 0; i < size; i++) {
 		vec.push_back(0);
 	}
+}
+
+ double Vector::getMod() {
+	 double module = 0.0;
+	 for (int i = 0; i < size; i++) {
+		 module = module + vec[i] * vec[i];
+	 }
+	 return sqrt(module);
 }
 
 Vector Vector::operator+(double num) {
