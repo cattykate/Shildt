@@ -1,11 +1,7 @@
 ///////////////////////////////
 //-------CLASS VECTOR---------
-//---OVERLOAD OF OPERATIONS---
-//-----TASKS 4, 12, 20--------
 //---------FRIEND-------------
 //--------TASKS 18------------
-//------INPUT/OUTPUT----------
-//----------TASK 4------------
 ///////////////////////////////
 #include <iostream>
 #include <vector>
@@ -18,16 +14,13 @@ class Vector {
 	int size;
 public:	
 	Vector(int n, double *arr);
-	Vector() {};
+	Vector(): size(0), data(0) {}
 
 	double getMod();
 
 	double operator [] (int a) {
 		return data[a];
-	}
-
-	Vector operator+(Vector vb);
-	
+	}	
 
 	friend double operator*(Vector va, Vector vb);
 	friend double operator%(Vector va, Vector vb);
@@ -43,9 +36,6 @@ double Vector::getMod() {
 }
 
 Vector::Vector(int n, double *arr) {
-	/*for (int i = 0; i < size; i++) {
-		data.push_back(0);
-	}*/
 	size = n;
 	data = new double[n];
 
@@ -58,14 +48,7 @@ Vector::Vector(int n, double *arr) {
 // + with Vector 
 // DON'T CORRECCT
 // ERROR
-Vector Vector::operator+(Vector vb) {
-	Vector vtemp;
 
-	for (int i = 0; i < vtemp.size; i++) {
-		vtemp.data[i] = vtemp.data[i] + vb.data[i];
-	}
-	return vtemp;
-}
 
 // SCALAR MULTIPLY
 double operator*(Vector va, Vector vb) {
@@ -83,15 +66,14 @@ double operator%(Vector va, Vector vb) {
 
 
 int main() {
-	double a[] = { 1,3,4 };
+	double a[] = { 1,1,1 };
 	Vector va(3, a);
 
-	double b[] = { 2,1,1 };
+	double b[] = { 1,1,1 };
 	Vector vb(3, b);
 
-	Vector vc;
 
-	vc = va + vb;
+	va = va + 3.0;
 
 
 	return 0; 
