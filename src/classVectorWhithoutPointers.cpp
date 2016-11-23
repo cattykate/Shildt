@@ -17,8 +17,9 @@ public:
 	
 	double getMod();
 
-	Vector operator+(double num);
-	Vector operator+(Vector vb);
+	//OVERLOAD TASK 4
+	//Vector operator+(double num);
+	//Vector operator+(Vector vb);
 
 	friend double operator+(Vector va, Vector vb); // scalar multiply
 	friend Vector operator*(Vector va, Vector vb); // vector multiply
@@ -40,21 +41,25 @@ Vector::Vector(int n) {
 	 return sqrt(module);
 }
 
-Vector Vector::operator+(double num) {
+ // OVERLOAD TASK 4
+ // ADDITION VECTOR WHITH REAL NUMBER
+//Vector Vector::operator+(double num) {
+//
+//	for (int i = 0; i < size; i++) {
+//		vec[i] = vec[i] + num;
+//	}
+//	return *this;
+//}
 
-	for (int i = 0; i < size; i++) {
-		vec[i] = vec[i] + num;
-	}
-	return *this;
-}
+// ADDITION VECTOR WHITH VECTOR
+//Vector Vector::operator+(Vector vb) {
+//	for (int i = 0; i < size; i++) {
+//		vec[i] = vec[i] + vb.vec[i];
+//	}
+//	return *this;
+//}
 
-Vector Vector::operator+(Vector vb) {
-	for (int i = 0; i < size; i++) {
-		vec[i] = vec[i] + vb.vec[i];
-	}
-	return *this;
-}
-
+//OVERLOAD TASK 12
 //Scalar multiply
 double operator+(Vector va, Vector vb) {
 	double scalar = 0.0;
@@ -63,7 +68,6 @@ double operator+(Vector va, Vector vb) {
 	}
 	return scalar;
 }
-
 //Vector multiply
 
 
@@ -84,7 +88,7 @@ int main() {
 	Vector vc(3);
 	/*double cnum = 7.0;
 	vc = va + cnum;*/
-	vc = va + vb;
+
 
 
 	return 0;
