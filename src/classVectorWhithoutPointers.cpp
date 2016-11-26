@@ -1,6 +1,6 @@
 ///////////////////////////////
 //---OVERLOAD OF OPERATIONS---
-//-----TASKS 4, 12, 20-------
+//-----TASK 4, 20 ---------------
 //------INPUT/OUTPUT----------
 //----------TASK 4------------
 ///////////////////////////////
@@ -17,12 +17,10 @@ public:
 	
 	double getMod();
 
-	//OVERLOAD TASK 4
-	//Vector operator+(double num);
-	//Vector operator+(Vector vb);
-
-	friend double operator+(Vector va, Vector vb); // scalar multiply
+	
+	friend double operator+(Vector va, Vector vb); // scalar multiply for two vectors
 	friend Vector operator*(Vector va, Vector vb); // vector multiply
+	friend double operator+(Vector va, double num); // scalar myltiply for vector with real number
 	 
 };
 
@@ -59,8 +57,8 @@ Vector::Vector(int n) {
 //	return *this;
 //}
 
-//OVERLOAD TASK 12
-//Scalar multiply
+//OVERLOAD TASK 20
+//Scalar multiply for two vectors
 double operator+(Vector va, Vector vb) {
 	double scalar = 0.0;
 	for (int i = 0; i < va.size; i++) {
@@ -68,8 +66,15 @@ double operator+(Vector va, Vector vb) {
 	}
 	return scalar;
 }
-//Vector multiply
 
+//Scalar multiply for vector with real mumbers
+double operator+(Vector va, double num) {
+	double scalar = 0.0;
+	for (int i = 0; i < va.size; i++) {
+		scalar = scalar + va.vec[i] * num;
+	}
+	return scalar;
+}
 
 int main() {
 	Vector va(3);
@@ -85,11 +90,13 @@ int main() {
 	vb.vec[2] = 1;
 	
 
-	Vector vc(3);
-	/*double cnum = 7.0;
-	vc = va + cnum;*/
+	//Vector vc(3);
+	double num = 7.0;
+	
 
-
+	double scalar = 0;
+	scalar = va + vb;
+	scalar = va + num;
 
 	return 0;
 }
