@@ -6,6 +6,7 @@
 ///////////////////////////////
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include <vector>
 #include <cmath>
 
@@ -24,8 +25,9 @@ public:
 	friend Vector operator*(Vector va, Vector vb); // vector multiply
 	friend double operator+(Vector va, double num); // scalar myltiply for vector with real number
 
-	friend std::ostream &operator<< (std::ostream &stream, Vector obj);
-	friend std::istream &operator>> (std::istream &stream, Vector obj);
+	friend std::ostream &operator<< (std::ostream &out, Vector obj);
+	friend std::istream &operator>> (std::istream &in, Vector obj);
+
 };
 
 Vector::Vector(int n) {
@@ -80,21 +82,25 @@ double operator+(Vector va, double num) {
 	return scalar;
 }
 
-std::ostream &operator<< (std::ostream &stream, Vector obj) {
-	stream << "a = { ";
-	for (int i = 0; i < obj.size; ++i) {
-		stream << obj.vec[i] << ", ";
+
+std::ostream &operator<< (std::ostream &out, Vector obj) {
+	out << "vec = { ";
+	for (int i = 0; i < (obj.size - 1); i++) {
+		out << std::setprecision(2) << obj.vec[i] << ", ";
 	}
-	stream << "\b}"  << std::endl;
-	return stream;
+	out << std::setprecision(2) << obj.vec[obj.size - 1] << " }" << std::endl;
+	return out;
 }
 
-std::istream &operator>> (std::istream &stream, Vector obj) {
+
+std::istream &operator>> (std::istream &in, Vector obj) {
 	for (int i = 0; i < obj.size; i++) {
-		stream >> obj.vec[i];
+		in >> obj.vec[i];
 	}
-	return stream;
+	return in;
 }
+
+
 
 int main() {
 	Vector va(3);
@@ -120,12 +126,20 @@ int main() {
 	//--------------FILE INPUT/OUTPUT-------------------
 	////////////////////////////////////////////////////
 
+	Vector vc(3); 
+
+	vc.vec[0] = 1;
+	vc.vec[1] = 1;
+	vc.vec[2] = 1;
 
 	std::ofstream out("Vector.txt"); 
 	if (!out) {
 		std::cout << "Can't open file";
 		return 1;
-	}
+	}	 
+
+	out << vc << "\n"; 
+	out.close();
 
 	std::ifstream in("Vector.txt");
 	if (!in) {
@@ -133,9 +147,12 @@ int main() {
 		return 1;
 	}
 
-	Vector vc(3);
-	out << vc << "\n"; 
-	out.close();
+	in >> vc;
+	
+	std::cout << vc;
+
+	in.close();
+
 
 	return 0;
 }
