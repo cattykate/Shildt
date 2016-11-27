@@ -26,6 +26,26 @@ template <typename T> T* Remove(int size, T* arr, T x) {
 	return arr;
 }
 
+
+////////////////////////////////////////////////////
+// -------------------TASK 8-----------------------
+// This function replace symbol x to simbol y in array: 
+//----------Replace(arr, x, y);--------------------
+// Size, type of array and symbol are arbitary
+////////////////////////////////////////////////////
+#define arr_size 6
+
+template <class T> T* Replace(T* arr, T x, T y) {
+	for (int i = 0; i < arr_size; i++) {
+		if (arr[i] == x) {
+			arr[i] = y;
+			i++;
+		}
+	}
+	return arr;
+}
+
+
 ////////////////////////////////////////////////////
 // -------------------TASK 12----------------
 //function checks whether the string is a palindrome
@@ -84,6 +104,10 @@ int main() {
 	Palindrom(size, arr);
 	Palindrom(5, arr1);
 	Palindrom(6, arr2);
+	Replace(arr, 2, 7);
+	for (int i = 0; i < size; i++) {
+		std::cout << arr[i] << " ";
+		}
 	return 0;
 
 }
