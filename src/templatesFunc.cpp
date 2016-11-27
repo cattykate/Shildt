@@ -75,6 +75,31 @@ template <typename T> void Palindrom(int size, T* arr) {
 	else std::cout << "\nString is a palindrom!" << std::endl;
 }
 
+
+////////////////////////////////////////////////////
+// -------------------TASK 24-------------------
+//--function finds MAX and MIN values in array--
+////////////////////////////////////////////////////
+
+template <typename T> void getMinMax(int size, T* arr) {
+	T min = arr[0];
+	T max = arr[0];
+
+	for (int i = 0; i < size; i++) {
+		if (arr[i] < min) {
+			min = arr[i];
+		}
+	}
+
+	for (int i = 0; i < size; i++) {
+		if (arr[i] > max) {
+			max = arr[i];
+		}
+	}
+	std::cout << "MIN = " << min << std::endl;
+	std::cout << "MAX = " << max << std::endl;
+ }
+
 int main() {
 	
 	int size;
@@ -82,15 +107,19 @@ int main() {
 	size = 7;
 	arr = new int[size];
 
-	arr[0] = 1;
+	arr[0] = 121;
 	arr[1] = 2;
 	arr[2] = 3;
 	arr[3] = 4;
 	arr[4] = 3;
 	arr[5] = 2;
 	arr[6] = 1;
-//	arr[7] = 1;
 
+	char arr1[5] = { 'a', 'b', 'c', 'c', 'b' };
+	char arr2[6] = { 'a', 'b', 'c', 'c', 'b', 'a' };
+
+	/*getMinMax(size, arr);
+	getMinMax(5, arr1);*/
 
 	//Remove(size, arr, 2);
 
@@ -98,16 +127,18 @@ int main() {
 	//	std::cout << arr[i] << " ";
 	//}
 
-	char arr1[5] = { 'a', 'b', 'c', 'c', 'b' };
-	char arr2[6] = { 'a', 'b', 'c', 'c', 'b', 'a' };
 
-	Palindrom(size, arr);
-	Palindrom(5, arr1);
-	Palindrom(6, arr2);
-	Replace(arr, 2, 7);
+	//Palindrom(size, arr);
+	//Palindrom(5, arr1);
+	//Palindrom(6, arr2);
+
+
+	/*Replace(arr, 2, 7);
+
 	for (int i = 0; i < size; i++) {
 		std::cout << arr[i] << " ";
 		}
+*/
 	return 0;
 
 }
