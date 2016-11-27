@@ -78,8 +78,12 @@ int main() {
 	//	std::cout << arr[i] << " ";
 	//}
 
-	Palindrom(size, arr);
+	char arr1[5] = { 'a', 'b', 'c', 'c', 'b' };
+	char arr2[6] = { 'a', 'b', 'c', 'c', 'b', 'a' };
 
+	Palindrom(size, arr);
+	Palindrom(5, arr1);
+	Palindrom(6, arr2);
 	return 0;
 
 }
