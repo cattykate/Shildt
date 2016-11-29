@@ -11,17 +11,22 @@
 // --------------Remove (arr, x)------------
 // Size, type of array and symbol are arbitary
 ////////////////////////////////////////////
-template <typename T> T* remove(int size, T* arr, T x) {
+template <typename T> void remove(int size, T* arr, T x) {
 	T* tmpArr;
-	tmpArr = new T[size];
+	int newSize = 0;
+	tmpArr = new T[newSize];
 
-	for (int i = 0, j = 0; i < size, j < size; i++) {
+	for (int i = 0, j = 0; i < size; i++) {
 		if (arr[i] != x) {
-			arr[j] = arr[i];
+			tmpArr[j] = arr[i];
 			j++;
+			newSize++;
 		}
 	}
-	return tmpArr;
+
+	for (int i = 0; i < newSize; i++) {
+		std::cout << tmpArr[i] << " ";
+	}
 }
 
 ////////////////////////////////////////////////////
@@ -48,10 +53,13 @@ template <class T> T* replace(T* arr, T x, T y) {
 // abbbzzx => abzx
 ////////////////////////////////////////////////////
 
-//template <typename T> *T void replaceRepeated() {
-//
-//
-//}
+template <typename T> T* replaceRepeated(int size, T* arr) {
+	T* tmpArr;
+	tmpArr = new T[size];
+
+
+
+}
 
 ////////////////////////////////////////////////////
 // -------------------TASK 12----------------
@@ -129,10 +137,6 @@ int main() {
 	getMinMax(5, arr1);*/
 
 	remove(size, arr, 2);
-
-	for (int i = 0; i < size; i++) {
-			std::cout << arr[i] << " ";
-			}
 
 	//palindrom(size, arr);
 	//palindrom(5, arr1);
