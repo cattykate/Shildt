@@ -11,21 +11,18 @@
 // --------------Remove (arr, x)------------
 // Size, type of array and symbol are arbitary
 ////////////////////////////////////////////
-template <typename T> T* Remove(int size, T* arr, T x) {
+template <typename T> T* remove(int size, T* arr, T x) {
+	T* tmpArr;
+	tmpArr = new T[size];
 
-	for (int i = 0; i < size; i++) {
-		if (arr[i] != x) continue;
-		else {
-			for (int j = i; j < size; j++) {
-				arr[j] = arr[j + 1];
-
-			}
+	for (int i = 0, j = 0; i < size, j < size; i++) {
+		if (arr[i] != x) {
+			arr[j] = arr[i];
+			j++;
 		}
-		i = 0;
 	}
-	return arr;
+	return tmpArr;
 }
-
 
 ////////////////////////////////////////////////////
 // -------------------TASK 8-----------------------
@@ -35,7 +32,7 @@ template <typename T> T* Remove(int size, T* arr, T x) {
 ////////////////////////////////////////////////////
 #define arr_size 6
 
-template <class T> T* Replace(T* arr, T x, T y) {
+template <class T> T* replace(T* arr, T x, T y) {
 	for (int i = 0; i < arr_size; i++) {
 		if (arr[i] == x) {
 			arr[i] = y;
@@ -44,7 +41,17 @@ template <class T> T* Replace(T* arr, T x, T y) {
 	}
 	return arr;
 }
+////////////////////////////////////////////////////
+// -------------------TASK 10----------------------
+// function replaces all the instances repeated 
+// characters in a string
+// abbbzzx => abzx
+////////////////////////////////////////////////////
 
+//template <typename T> *T void replaceRepeated() {
+//
+//
+//}
 
 ////////////////////////////////////////////////////
 // -------------------TASK 12----------------
@@ -52,7 +59,7 @@ template <class T> T* Replace(T* arr, T x, T y) {
 ////////////////////////////////////////////////////
 
 
-template <typename T> void Palindrom(int size, T* arr) {
+template <typename T> void palindrom(int size, T* arr) {
 	bool fl = true;
 	int middle = 0;
 
@@ -102,12 +109,12 @@ template <typename T> void getMinMax(int size, T* arr) {
 
 int main() {
 	
-	int size;
 	int * arr;
+	int size;
 	size = 7;
 	arr = new int[size];
 
-	arr[0] = 121;
+	arr[0] = 2;
 	arr[1] = 2;
 	arr[2] = 3;
 	arr[3] = 4;
@@ -121,24 +128,23 @@ int main() {
 	/*getMinMax(size, arr);
 	getMinMax(5, arr1);*/
 
-	//Remove(size, arr, 2);
+	remove(size, arr, 2);
+
+	for (int i = 0; i < size; i++) {
+			std::cout << arr[i] << " ";
+			}
+
+	//palindrom(size, arr);
+	//palindrom(5, arr1);
+	//palindrom(6, arr2);
+
+
+	//replace(arr, 2, 7);
 
 	//for (int i = 0; i < size; i++) {
 	//	std::cout << arr[i] << " ";
-	//}
+	//	}
 
-
-	//Palindrom(size, arr);
-	//Palindrom(5, arr1);
-	//Palindrom(6, arr2);
-
-
-	/*Replace(arr, 2, 7);
-
-	for (int i = 0; i < size; i++) {
-		std::cout << arr[i] << " ";
-		}
-*/
 	return 0;
 
 }
