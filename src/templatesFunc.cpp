@@ -1,6 +1,6 @@
 ///////////////////////////////
 //---TEMPLATES OF FUNCTIONS----
-//---TASK 7-------------------
+//-----------------------------
 //////////////////////////////
 #include <iostream>
 #include <vector>
@@ -12,24 +12,27 @@
 // Size, type of array and symbol are arbitary
 ////////////////////////////////////////////
 template <typename T> void remove(int size, T* arr, T x) {
-	T* tmpArr;
-	//int newSize = 0;
-	//tmpArr = new T[newSize];
-	tmpArr = new T[size];
-
-	for (int i = 0, j = 0; i < size; i++) {
-		if (arr[i] != x) {
-			tmpArr[j] = arr[i];
-			std::cout << tmpArr[j] << " ";
-			j++;
-			//newSize++;
-		}
+	int newSize = size;
+	for (int i = 0; i < size; i++) {
+		if (arr[i] == x) newSize--;
 	}
 
-	/*for (int i = 0; i < newSize; i++) {
-		std::cout << tmpArr[i] << " ";
-	}*/
+	T* newArr;
+	newArr = new T[newSize];
+
+	for (int i = 0, j = 0; i < size; i++) {
+		if (arr[i] == x) continue;
+		else {
+			newArr[j] = arr[i];
+			j++;
+		}
+	}
+	for (int i = 0; i < newSize; i++) {
+		std::cout << newArr[i] << " " ;
+	}
 }
+	
+
 
 ////////////////////////////////////////////////////
 // -------------------TASK 8-----------------------
@@ -152,8 +155,7 @@ template <typename T> void getMinMax(int size, T* arr) {
 int main() {
 	
 	int * arr;
-	int size;
-	size = 7;
+	int size = 0;
 	arr = new int[size];
 
 	arr[0] = 2;
@@ -163,6 +165,9 @@ int main() {
 	arr[4] = 3;
 	arr[5] = 2;
 	arr[6] = 1;
+
+	remove(7, arr, 2);
+
 
 	char arr1[7] = { 'a', 'b', 'c', 't', 'e', 's', 't' };
 	char arr2[6] = { 'a', 'a', 'a', 'c', 'b', 'a' };
@@ -178,7 +183,8 @@ int main() {
 	/*getMinMax(size, arr);
 	getMinMax(5, arr1);*/
 
-	remove(size, arr, 2);
+
+
 
 	//palindrom(size, arr);
 	//palindrom(5, arr1);
