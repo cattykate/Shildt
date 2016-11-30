@@ -4,6 +4,8 @@
 //////////////////////////////
 #include <iostream>
 #include <vector>
+#include <utility>
+
 
 ////////////////////////////////////////////
 // -------------------TASK 7----------------
@@ -11,7 +13,7 @@
 // --------------Remove (arr, x)------------
 // Size, type of array and symbol are arbitary
 ////////////////////////////////////////////
-template <typename T> void remove(int size, T* arr, T x) {
+template <typename T> std::pair <T*, int> remove(int size, T* arr, T x) {
 	int newSize = size;
 
 	for (int i = 0; i < size; i++) {
@@ -28,13 +30,17 @@ template <typename T> void remove(int size, T* arr, T x) {
 			j++;
 		}
 	}
+	std::pair <T*, int> pums;
+	pums = std::make_pair(newArr, newSize);
 
-	for (int i = 0; i < newSize; i++) {
-		std::cout << newArr[i] << " " ;
-	}
+	//for (int i = 0; i < newSize; i++) {
+	//	std::cout << pums.first[i];
+	//}
+	//std::cout << std::endl << pums.second;
+
+	return pums;
 }
 	
-
 
 ////////////////////////////////////////////////////
 // -------------------TASK 8-----------------------
@@ -62,25 +68,22 @@ template <class T> T* replace(T* arr, T x, T y) {
 // abbbzzxa => abzxa
 ////////////////////////////////////////////////////
 
-template <typename T> void replaceRepeated(int size, T* arr) {
+template <typename T> std::pair <T*, int> replaceRepeated(int size, T* arr) {
 	T* newArr;
 	newArr = new T[size];
-	//int newSize = 0;
+	int newSize = 0;
 	
 	for (int i = 0, j = 0; i < size; i++) {
 		if (arr[i] != arr[i + 1]) {
 			newArr[j] = arr[i];
-			std::cout<<newArr[j] << " ";
 			j++;
-		//	newSize++;
+			newSize++;
 		}
 	}
+	std::pair <T*, int> pums;
+	pums = std::make_pair(newArr, newSize);
 
-	/*for (int i = 0; i < newSize; i++) {
-		std::cout << newArr[i] << " ";
-	}*/
-
-	std::cout << std::endl;
+	return pums;
 }
 
 ////////////////////////////////////////////////////
@@ -119,15 +122,18 @@ template <typename T> void palindrom(int size, T* arr) {
 // ---------- Substr ("abctest", 3, 2) -> "te"
 ////////////////////////////////////////////////////
 
-template <typename T> void substr(T* arr, int ind, int len) {
+template <typename T> std::pair <T*, int> substr(T* arr, int ind, int len) {
 	T* substr;
 	substr = new T[len];
 
 	for (int i = ind; i < (ind + len); i++) {
 		substr[i] = arr[i];
-		std::cout << substr[i];
 	}
-	std::cout << std::endl;
+
+	std::pair <T*, int> pums;
+	pums = std::make_pair(substr, len);
+
+	return pums;
 }
 
 ////////////////////////////////////////////////////
@@ -168,16 +174,17 @@ int main() {
 	arr[5] = 2;
 	arr[6] = 1;
 
-	remove(size, arr, 2);
+	//remove(size, arr, 2);
 
-	/*char arr1[7] = { 'a', 'b', 'c', 't', 'e', 's', 't' };
+
+	/*char arr1[7] = { 'a', 'b', 'c', 'c', 'e', 's', 't' };
 	char arr2[6] = { 'a', 'a', 'a', 'c', 'b', 'a' };
 	char string[10] = "abcdefghf";
 
 	substr(arr1, 3, 2);
 	substr(string, 3, 3); */
 
-	/*replaceRepeated(5, arr1);
+	/*replaceRepeated(7, arr1);
 	replaceRepeated(6, arr2);*/
 
 	/*getMinMax(size, arr);
@@ -190,9 +197,6 @@ int main() {
 
 	//replace(arr, 2, 7);
 
-	//for (int i = 0; i < size; i++) {
-	//	std::cout << arr[i] << " ";
-	//	}
 
 	return 0;
 
