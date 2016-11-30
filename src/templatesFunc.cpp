@@ -46,6 +46,8 @@ template <class T> T* replace(T* arr, T x, T y) {
 	}
 	return arr;
 }
+
+
 ////////////////////////////////////////////////////
 // -------------------TASK 10----------------------
 // function replaces all the instances repeated 
@@ -53,19 +55,29 @@ template <class T> T* replace(T* arr, T x, T y) {
 // abbbzzx => abzx
 ////////////////////////////////////////////////////
 
-template <typename T> T* replaceRepeated(int size, T* arr) {
-	T* tmpArr;
-	tmpArr = new T[size];
+template <typename T> void replaceRepeated(int size, T* arr) {
+	T* newArr;
+	newArr = new T[size];
+	int newSize = 0;
+	
+	for (int i = 0, j = 0; i < size; i++) {
+		if (arr[i] != arr[i + 1]) {
+			newArr[j] = arr[i];
+			j++;
+			newSize++;
+		}
+	}
 
-
-
+	for (int i = 0; i < newSize; i++) {
+		std::cout << newArr[i] << " ";
+	}
+	std::cout << std::endl;
 }
 
 ////////////////////////////////////////////////////
 // -------------------TASK 12----------------
 //function checks whether the string is a palindrome
 ////////////////////////////////////////////////////
-
 
 template <typename T> void palindrom(int size, T* arr) {
 	bool fl = true;
@@ -130,8 +142,11 @@ int main() {
 	arr[5] = 2;
 	arr[6] = 1;
 
-	char arr1[5] = { 'a', 'b', 'c', 'c', 'b' };
-	char arr2[6] = { 'a', 'b', 'c', 'c', 'b', 'a' };
+	char arr1[5] = { 'a', 'a', 'c', 'c', 'b' };
+	char arr2[6] = { 'a', 'a', 'a', 'c', 'b', 'a' };
+
+	replaceRepeated(5, arr1);
+	replaceRepeated(6, arr2);
 
 	/*getMinMax(size, arr);
 	getMinMax(5, arr1);*/
