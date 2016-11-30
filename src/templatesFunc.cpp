@@ -13,20 +13,21 @@
 ////////////////////////////////////////////
 template <typename T> void remove(int size, T* arr, T x) {
 	T* tmpArr;
-	int newSize = 0;
-	tmpArr = new T[newSize];
+	//int newSize = 0;
+	tmpArr = new T[size];
 
 	for (int i = 0, j = 0; i < size; i++) {
 		if (arr[i] != x) {
 			tmpArr[j] = arr[i];
+			std::cout << tmpArr[j] << " ";
 			j++;
-			newSize++;
+			//newSize++;
 		}
 	}
 
-	for (int i = 0; i < newSize; i++) {
+	/*for (int i = 0; i < newSize; i++) {
 		std::cout << tmpArr[i] << " ";
-	}
+	}*/
 }
 
 ////////////////////////////////////////////////////
@@ -58,19 +59,21 @@ template <class T> T* replace(T* arr, T x, T y) {
 template <typename T> void replaceRepeated(int size, T* arr) {
 	T* newArr;
 	newArr = new T[size];
-	int newSize = 0;
+	//int newSize = 0;
 	
 	for (int i = 0, j = 0; i < size; i++) {
 		if (arr[i] != arr[i + 1]) {
 			newArr[j] = arr[i];
+			std::cout<<newArr[j] << " ";
 			j++;
-			newSize++;
+		//	newSize++;
 		}
 	}
 
-	for (int i = 0; i < newSize; i++) {
+	/*for (int i = 0; i < newSize; i++) {
 		std::cout << newArr[i] << " ";
-	}
+	}*/
+
 	std::cout << std::endl;
 }
 
@@ -174,7 +177,7 @@ int main() {
 	/*getMinMax(size, arr);
 	getMinMax(5, arr1);*/
 
-	//remove(size, arr, 2);
+	remove(size, arr, 2);
 
 	//palindrom(size, arr);
 	//palindrom(5, arr1);
