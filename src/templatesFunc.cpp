@@ -14,6 +14,7 @@
 template <typename T> void remove(int size, T* arr, T x) {
 	T* tmpArr;
 	//int newSize = 0;
+	//tmpArr = new T[newSize];
 	tmpArr = new T[size];
 
 	for (int i = 0, j = 0; i < size; i++) {
