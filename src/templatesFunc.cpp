@@ -52,7 +52,7 @@ template <class T> T* replace(T* arr, T x, T y) {
 // -------------------TASK 10----------------------
 // function replaces all the instances repeated 
 // characters in a string
-// abbbzzx => abzx
+// abbbzzxa => abzxa
 ////////////////////////////////////////////////////
 
 template <typename T> void replaceRepeated(int size, T* arr) {
@@ -102,6 +102,24 @@ template <typename T> void palindrom(int size, T* arr) {
 	else std::cout << "\nString is a palindrom!" << std::endl;
 }
 
+////////////////////////////////////////////////////
+// -------------------TASK 17-------------------
+//--function selection the substring from the array
+// --- start with index h, substring has a length 
+//----FOR EXAMPLE:   len = 2; h = 3 
+// ---------- Substr ("abctest", 3, 2) -> "te"
+////////////////////////////////////////////////////
+
+template <typename T> void substr(T* arr, int ind, int len) {
+	T* substr;
+	substr = new T[len];
+
+	for (int i = ind; i < (ind + len); i++) {
+		substr[i] = arr[i];
+		std::cout << substr[i];
+	}
+	std::cout << std::endl;
+}
 
 ////////////////////////////////////////////////////
 // -------------------TASK 24-------------------
@@ -142,16 +160,21 @@ int main() {
 	arr[5] = 2;
 	arr[6] = 1;
 
-	char arr1[5] = { 'a', 'a', 'c', 'c', 'b' };
+	char arr1[7] = { 'a', 'b', 'c', 't', 'e', 's', 't' };
 	char arr2[6] = { 'a', 'a', 'a', 'c', 'b', 'a' };
+	char string[10] = "abcdefghf";
 
-	replaceRepeated(5, arr1);
-	replaceRepeated(6, arr2);
+	substr(arr1, 3, 2);
+	substr(string, 3, 3);
+
+	/*replaceRepeated(5, arr1);
+	replaceRepeated(6, arr2);*/
+
 
 	/*getMinMax(size, arr);
 	getMinMax(5, arr1);*/
 
-	remove(size, arr, 2);
+	//remove(size, arr, 2);
 
 	//palindrom(size, arr);
 	//palindrom(5, arr1);
