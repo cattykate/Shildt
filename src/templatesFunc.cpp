@@ -13,6 +13,7 @@
 ////////////////////////////////////////////
 template <typename T> void remove(int size, T* arr, T x) {
 	int newSize = size;
+
 	for (int i = 0; i < size; i++) {
 		if (arr[i] == x) newSize--;
 	}
@@ -27,6 +28,7 @@ template <typename T> void remove(int size, T* arr, T x) {
 			j++;
 		}
 	}
+
 	for (int i = 0; i < newSize; i++) {
 		std::cout << newArr[i] << " " ;
 	}
@@ -155,7 +157,7 @@ template <typename T> void getMinMax(int size, T* arr) {
 int main() {
 	
 	int * arr;
-	int size = 0;
+	int size = 7;
 	arr = new int[size];
 
 	arr[0] = 2;
@@ -166,25 +168,20 @@ int main() {
 	arr[5] = 2;
 	arr[6] = 1;
 
-	remove(7, arr, 2);
+	remove(size, arr, 2);
 
-
-	char arr1[7] = { 'a', 'b', 'c', 't', 'e', 's', 't' };
+	/*char arr1[7] = { 'a', 'b', 'c', 't', 'e', 's', 't' };
 	char arr2[6] = { 'a', 'a', 'a', 'c', 'b', 'a' };
 	char string[10] = "abcdefghf";
 
 	substr(arr1, 3, 2);
-	substr(string, 3, 3);
+	substr(string, 3, 3); */
 
 	/*replaceRepeated(5, arr1);
 	replaceRepeated(6, arr2);*/
 
-
 	/*getMinMax(size, arr);
 	getMinMax(5, arr1);*/
-
-
-
 
 	//palindrom(size, arr);
 	//palindrom(5, arr1);
