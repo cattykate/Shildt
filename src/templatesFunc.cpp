@@ -137,6 +137,49 @@ template <typename T> std::pair <T*, int> substr(T* arr, int ind, int len) {
 }
 
 ////////////////////////////////////////////////////
+// -------------------TASK 19-------------------
+//--function compare two sequence
+// if (s1 > s2) return 1;
+// if (s1 == s2) return 0;
+// if (s1 < s2) return -1;
+// if (comparison not correct) return -2;
+////////////////////////////////////////////////////
+
+// FIRST VERSION 
+template <typename T> int compareSequences(T* s1, T* s2, int size) {
+	T sum1 = 0;
+	T sum2 = 0;
+
+	for (int i = 0; i < size ; i++) {
+		sum1 = sum1 + s1[i];
+		sum2 = sum2 + s2[i];
+	}
+	if (sum1 > sum2) return 1;
+	else if (sum1 == sum2) return 0;
+	else if (sum1 < sum2) return -1;
+	else return -2; 
+}
+
+// SECOND VERSION
+// function comparison element-by-element
+template <typename T> int compareSequences(T* s1, T* s2, int size1, int size2) {
+	bool fl = true;
+
+	if (size1 != size2) return -2; // not correct comparison
+
+	for (int i = 0; i < size1; i++) {
+		if (s1[i] != s2[i]) fl = false;
+	}
+	if (fl == true) return 0; // s1 == s2
+	
+	for (int i = 0; i < size1; i++) {
+		if (s1[i] < s2[i]) return -1; // s1<s2;
+		else if (s1[i] > s2[i]) return 1; // s1>s2;
+		else continue;
+	}
+}
+
+////////////////////////////////////////////////////
 // -------------------TASK 24-------------------
 //--function finds MAX and MIN values in array--
 ////////////////////////////////////////////////////
@@ -177,9 +220,17 @@ int main() {
 	//remove(size, arr, 2);
 
 
-	/*char arr1[7] = { 'a', 'b', 'c', 'c', 'e', 's', 't' };
-	char arr2[6] = { 'a', 'a', 'a', 'c', 'b', 'a' };
-	char string[10] = "abcdefghf";
+	/*char arr1[6] = { 'a', 'b', 'c', 'c', 'e', 's' };
+	char arr2[6] = { 'a', 'a', 'a', 'c', 'b', 'a' };*/
+
+	int s1[5] = { 1, 9, 3, 4, 5 };
+	int s2[5] = { 1, 9, 3, 4, 5 };
+	int res = 0;
+	res = compareSequences(s1, s2, 5, 5);
+	std::cout << res;
+	
+	
+	/*char string[10] = "abcdefghf";
 
 	substr(arr1, 3, 2);
 	substr(string, 3, 3); */
