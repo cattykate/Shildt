@@ -10,6 +10,18 @@
 // realize Linerial Search
 ////////////////////////////////////////////////////////
 #include <iostream>
+#include <vector>
+
+template <class T> class MyList {
+private:
+	std::vector <T> vecList;
+public:
+	MyList(int size) : vecList(size) {};
+	~MyList{ vecList.clear(); }
+
+	void addLast(T val) { vecList.push_back(val); }
+	void removeLast(T val) { vecList.pop_back(val); }
+};
 
 int main() {
 
