@@ -12,6 +12,16 @@
 #include <iostream>
 #include <vector>
 
+class Complex {
+private:
+	double real;
+	double image;
+public:
+	Complex(double re, double im) : real(re), image(im) {};
+	Complex() {};
+	~Complex() {};
+};
+
 template <class T> class MyList {
 private:
 	std::vector <T> vecList;
@@ -21,7 +31,10 @@ public:
 
 	void addLast(T val) { vecList.push_back(val); }
 	void removeLast(T val) { vecList.pop_back(val); }
+
+	int getSize() { return vecList.size(); }
 };
+
 
 int main() {
 
